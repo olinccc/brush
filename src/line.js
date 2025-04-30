@@ -1,16 +1,14 @@
 export default class Line {
-    constructor(args = {}) {
+    constructor({ stroke, strokeWeight }) {
+        this.stroke = stroke;
+        this.strokeWeight = strokeWeight;
         this.points = [];
-        this.stroke = args.stroke || 0;
-        this.strokeWeight = args.strokeWeight || 1;
     }
-    addPoint(point) {
-        this.points.push(point);
-    }
+
     draw() {
-       noFill();
-        stroke(0);
-        strokeWeight(2);
+        stroke(this.stroke); // Apply the stroke color
+        strokeWeight(this.strokeWeight); // Apply the stroke weight
+        noFill();
         beginShape();
         this.points.forEach((point) => {
             vertex(point.x, point.y);
